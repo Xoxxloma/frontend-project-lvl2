@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import gendiff from '../src';
 
-const formats = ['json', 'yml', 'ini'];
+const formats = ['json', 'yaml', 'ini'];
 const getPath = (filename) => path.join(__dirname, `__fixtures__/${filename}`);
 const expected = fs.readFileSync(getPath('result'), 'utf-8');
 

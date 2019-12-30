@@ -12,3 +12,10 @@ JSON
 
 [![asciicast](https://asciinema.org/a/EaB7LFYdrhn7jEh2sqoPF6r3d.svg)](https://asciinema.org/a/EaB7LFYdrhn7jEh2sqoPF6r3d)
 
+yaml
+
+[![asciicast](https://asciinema.org/a/TXsZnNmAl61GgSuioTlfsXrPk.svg)](https://asciinema.org/a/TXsZnNmAl61GgSuioTlfsXrPk)
+
+ini
+
+[![asciicast](https://asciinema.org/a/hxbiIeFY0WTGsnOPu144DBi6x.svg)](https://asciinema.org/a/hxbiIeFY0WTGsnOPu144DBi6x)

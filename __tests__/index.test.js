@@ -2,10 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import gendiff from '../src';
 
-test('shows the differences', () => {
-  const getPath = (filename) => path.join(__dirname, `__fixtures__/${filename}`);
-  const before = getPath('before.json');
-  const after = getPath('after.json');
-  const result = fs.readFileSync(getPath('result'), 'utf-8');
-  expect(gendiff(before, after)).toEqual(result);
+const formats = ['json', 'yml', 'ini'];
+const getPath = (filename) => path.join(__dirname, `__fixtures__/${filename}`);
+const expected = fs.readFileSync(getPath('result'), 'utf-8');
+
+test.each(formats)('%s', async (format) => {
+  const before = getPath(`before.${format}`);
+  const after = getPath(`after.${format}`);
+  const actual = gendiff(before, after);
+  expect(actual).toEqual(expected);
 });

@@ -1,7 +1,8 @@
-import { has, union } from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import parse from './parsers';
+import astBuilder from './astBuilder';
+import render from './stringify';
 
 const gendiff = (pathToFile1, pathToFile2) => {
   const data1 = fs.readFileSync(pathToFile1, 'utf-8');
@@ -13,21 +14,9 @@ const gendiff = (pathToFile1, pathToFile2) => {
   const obj1 = parse(data1, type1);
   const obj2 = parse(data2, type2);
 
-  const keys = union(Object.keys(obj1), Object.keys(obj2)).sort();
+  const difference = astBuilder(obj1, obj2);
 
-  const result = keys.map((key) => {
-    if (!has(obj2, key)) {
-      return (` - ${key}: ${obj1[key]}`);
-    }
-    if (!has(obj1, key)) {
-      return (` + ${key}: ${obj2[key]}`);
-    }
-    if (obj1[key] !== obj2[key]) {
-      return (` - ${key}: ${obj1[key]}\n + ${key}: ${obj2[key]}`);
-    }
-    return (`   ${key}: ${obj2[key]}`);
-  }).join('\n');
-  return `{\n${result}\n}`;
+  return render(difference);
 };
 
 export default gendiff;

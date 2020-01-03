@@ -19,3 +19,7 @@ yaml
 ini
 
 [![asciicast](https://asciinema.org/a/hxbiIeFY0WTGsnOPu144DBi6x.svg)](https://asciinema.org/a/hxbiIeFY0WTGsnOPu144DBi6x)
+
+nested structures
+
+[![asciicast](https://asciinema.org/a/U4QEQufPmmrMVv43kMTf8XIhO.svg)](https://asciinema.org/a/U4QEQufPmmrMVv43kMTf8XIhO)

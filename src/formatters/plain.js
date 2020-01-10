@@ -1,13 +1,11 @@
-import isObject from 'lodash';
-
 const propertyValues = {
-    string: (value) => `'${value}'`,
-    number: (value) => value,
-    object: () => '[complex value]',
-    boolean: (value) => value,
-  };
+  string: (value) => `'${value}'`,
+  number: (value) => value,
+  object: () => '[complex value]',
+  boolean: (value) => value,
+};
 
-const getValue = value => propertyValues[typeof value](value);
+const getValue = (value) => propertyValues[typeof value](value);
 
 const render = (astTree) => {
   const iter = (data, path = '') => data.map((object) => {

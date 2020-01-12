@@ -1,4 +1,4 @@
-import { isObject, keys, flatten } from 'lodash';
+import { isObject, keys, flattenDeep } from 'lodash';
 
 const makeSpaces = (times) => '  '.repeat(times);
 
@@ -23,20 +23,17 @@ const render = (astTree) => {
       case 'deleted':
         return `${space}- ${object.key}: ${text}`;
       case 'changed':
-        return [
-          `${space}- ${object.key}: ${stringify(object.beforeValue, depth)}`,
-          `${space}+ ${object.key}: ${stringify(object.afterValue, depth)}`,
-        ];
+        return `${space}- ${object.key}: ${stringify(object.beforeValue, depth)}\n${space}+ ${object.key}: ${stringify(object.afterValue, depth)}`;
       case 'unchanged':
         return `${space}  ${object.key}: ${text}`;
       case 'nested':
-        return `${space}  ${object.key}: {\n${flatten(iter(object.children, depth + 2))
+        return `${space}  ${object.key}: {\n${(iter(object.children, depth + 2))
           .join('\n')}\n${makeSpaces(depth + 1)}}`;
       default:
         throw new Error(`${object.type} is unknown`);
     }
   });
-  return `{\n${(flatten(iter(astTree))).join('\n')}\n}`;
+  return `{\n${(flattenDeep(iter(astTree))).join('\n')}\n}`;
 };
 
 

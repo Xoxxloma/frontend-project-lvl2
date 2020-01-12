@@ -14,9 +14,9 @@ const gendiff = (pathToFile1, pathToFile2, format = 'tree') => {
   const obj1 = parse(data1, type1);
   const obj2 = parse(data2, type2);
 
-  const difference = astBuilder(obj1, obj2);
+  const getDifference = astBuilder(obj1, obj2);
   const render = getFormatter(format);
-  return render(difference);
+  return render(getDifference);
 };
 
 export default gendiff;
